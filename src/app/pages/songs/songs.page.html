@@ -6,10 +6,24 @@
 
 <ion-content>
 
-  <div *ngFor="let cn of canciones">
-    <h1>Nombre: {{cn.nombreCancion}}</h1>
-  </div>
+  <ion-searchbar animated
+                  (ionChange)="buscar( $event )">
+  </ion-searchbar>
 
-  <p>Prueba</p>
+  <ion-list *ngFor="let cn of canciones | filtro: textoBuscar">
+    <ion-item>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{cn.autorCancion}}</ion-card-subtitle>
+          <ion-card-title>{{cn.nombreCancion}}</ion-card-title>
+        </ion-card-header>
 
+        <ion-card-content>
+          <audio class="panelAudio" [src]="cn.urlCancion" preload="none" controls></audio>
+          <ion-button color="dark" expand="full "(click)="presentAlert()">Mas</ion-button>
+        </ion-card-content>
+      </ion-card>
+
+    </ion-item>
+  </ion-list>
 </ion-content>
