@@ -19,6 +19,7 @@
         </ion-card-header>
 
         <ion-card-content>
+          <img [src]="cn.urlImageCancion">
           <audio class="panelAudio" [src]="cn.urlCancion" preload="none" controls></audio>
           <ion-button color="dark" expand="full "(click)="presentAlert()">Mas</ion-button>
         </ion-card-content>
